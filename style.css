@@ -45,16 +45,15 @@
     float:left;
     margin:5px;
   }
+
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   
   .pet-image {
     height:250px;
-  }
-
-  .dashboard-container {
-    /* display: flex;
-    justify-items: center;
-    flex-direction: column;
-    justify-self: center; */
   }
   
   .pet-image-container {
@@ -63,8 +62,14 @@
   }
   
   .dashboard {
-    float:left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     padding:20px;
+  }
+
+  .dashboard > div {
+    display: inline-block;
   }
   
   .button-container {

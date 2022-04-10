@@ -27,20 +27,24 @@ function getRandomInt(upperLimit) {
 }
 
 function clickedTreatButton() {
-  // Increase pet happiness
-  // Increase pet weight
+  pet_info.happiness += 0.5
+  pet_info.weight += 10
+
+
   checkAndUpdatePetInfoInHtml();
 }
 
 function clickedPlayButton() {
-  // Increase pet happiness
-  // Decrease pet weight
+  pet_info.happiness += 0.5
+  pet_info.weight -= 5
+
   checkAndUpdatePetInfoInHtml();
 }
 
 function clickedExerciseButton() {
-  // Decrease pet happiness
-  // Decrease pet weight
+  pet_info.happiness -= 0.8
+  pet_info.weight -= 10
+
   checkAndUpdatePetInfoInHtml();
 }
 
@@ -50,7 +54,16 @@ function checkAndUpdatePetInfoInHtml() {
 }
 
 function checkWeightAndHappinessBeforeUpdating() {
-  // Add conditional so if weight is lower than zero, set it back to zero
+
+  if (pet_info.happiness < 0) {
+    // message
+    pet_info.happiness = 0
+  }
+
+  if (pet_info.weight < 0) {
+    // message
+    pet_info.weight = 0
+  }
 }
 
 // Updates your HTML with the current values in your pet_info object
