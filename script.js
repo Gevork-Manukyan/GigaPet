@@ -12,9 +12,9 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
     $('.exercise-button').click(clickedExerciseButton);
    
   // Prompt user for name
-  while (pet_info.name === null) {
-      pet_info.name = prompt("Enter your pet name")
-  }
+  // while (pet_info.name === null) {
+  //     pet_info.name = prompt("Enter your pet name")
+  // }
   pet_info.weight = getRandomInt(100)
   pet_info.happiness = getRandomInt(10)
 
