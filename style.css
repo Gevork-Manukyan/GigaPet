@@ -88,4 +88,9 @@
     cursor:pointer;
     background-image: linear-gradient(to bottom,rgba(246,246,246,.1),0%,rgba(30,40,53,0),66%);
     color: #fafafa;
+    user-select: none;
+  }
+
+  .text-display-content {
+    background-color: bisque;
   }
