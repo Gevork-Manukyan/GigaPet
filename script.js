@@ -28,10 +28,10 @@ function createNewPet() {
   let petImage = getRandomInt(7)
   $(".pet-content-wrapper").append(`
 
-  <div class="pet${petNumber} pet">
+  <div class="pet${petNumber} pet-image${petImage} pet">
     <section class="pet-image-container">
       <!-- Replace pet image with your own pet image -->
-      <img class="pet-image pet-image${petNumber}" src="./assets/${petImage}.png">
+      <img class="pet-image" src="./assets/${petImage}.png">
     </section>
     <section class="dashboard">
         <div>Name: <strong><span class="name${petNumber}"></span></strong></div>

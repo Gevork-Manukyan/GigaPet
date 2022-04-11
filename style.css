@@ -11,16 +11,19 @@
   main {
     display:block;
     height:175px;
+    user-select: none;
   }
   
   header {
-    border-bottom: 1px solid black;
+
   }
   
   h1 {
-    font-weight: bold;
+    /* font-weight: bold; */
+    font-size: 35px;
     color: #000;
     text-align: center;
+    font-family: 'Press Start 2P', cursive;
   }
   
   .bold {
@@ -52,19 +55,46 @@
     align-items: center;
     overflow-y: auto;
     margin-bottom: 10px;
+    margin-top: 10px;
   }
 
   .pet {
-    
+    padding-top: 15px;
+    border-radius: 20px;
+    margin-right: 10px;
+  }
+
+  .pet-image-container {
+    text-align: center;
+    padding: 0px 110px;
   }
  
   .pet-image {
     height:250px;
   }
+
+  .pet-image1 {
+    background-color: rgb(62, 129, 237);
+  } 
   
-  .pet-image-container {
-    text-align: center;
-    padding: 0px 110px;
+  .pet-image2 {
+    background-color: rgb(132, 165, 199);
+  } 
+  
+  .pet-image3 {
+    background-color: rgb(117, 62, 237);
+  }
+
+  .pet-image4 {
+    background-color: rgb(205, 237, 62);
+  } 
+  
+  .pet-image5 {
+    background-color: rgb(255, 85, 0);
+  } 
+  
+  .pet-image6  {
+    background-color: rgb(54, 64, 81);
   }
 
   .dashboard {
@@ -75,7 +105,6 @@
   }
   
   .button-container {
-    width: 400px;
     margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
