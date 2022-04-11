@@ -1,5 +1,5 @@
 // Add a variable "pet_info" equal to a object with the name (string), weight (number), and happiness (number) of your pet
-var pet_info = {name: null, weight:"??", happiness:"??", smartness: "??"};
+var pet_info = {name: null, weight:"??", happiness:"??", smartness: "??", prestige: 0};
 
 $(function() { // Makes sure that your function is called once all the DOM elements of the page are ready to be used.
     
@@ -10,7 +10,8 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
     $('.treat-button').click(clickedTreatButton);
     $('.play-button').click(clickedPlayButton);
     $('.exercise-button').click(clickedExerciseButton);
-    $('.calculus-button').click(clickedCalculusButton)
+    $('.calculus-button').click(clickedCalculusButton);
+    $('.duplicate').click(clickedDuplicate);
    
   // Prompt user for name
   while (pet_info.name === null) {
@@ -80,6 +81,17 @@ function clickedCalculusButton() {
   checkAndUpdatePetInfoInHtml();
 }
 
+function clickedDuplicate () {
+  if (pet_info.smartness >= 20) {
+    pet_info.smartness -= 20
+    pet_info.prestige++
+
+    addToTextBox(`${pet_info.name}: I have trancended REALITY!!!`)
+  } else {
+    addToTextBox(`${pet_info.name}: Excuse me?`)
+  }
+}
+
 
 function checkAndUpdatePetInfoInHtml() {
   checkWeightAndHappinessBeforeUpdating();  
@@ -121,5 +133,6 @@ function updatePetInfoInHtml() {
   $('.weight').text(pet_info['weight']);
   $('.happiness').text(pet_info['happiness']);
   $('.intelligence').text(pet_info['smartness'])
+  $('.prestige').text(pet_info['prestige'])
 }
   
