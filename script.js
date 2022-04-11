@@ -40,19 +40,19 @@ function createNewPet() {
         <div>Intelligence: <strong><span class="intelligence${petNumber}"></span> Smartness</strong></div>
         <div>Prestige: <strong><span class="prestige${petNumber}"></span> lvl</strong></div>
         <div class="button-container">
-          <button class="pet${petNumber} treat-button">
+          <button class="pet${petNumber} pet-image${petImage}-button treat-button">
             Treat
           </button>
-          <button class="pet${petNumber} play-button">
+          <button class="pet${petNumber} pet-image${petImage}-button play-button">
             Play
           </button>
-          <button class="pet${petNumber} exercise-button">
+          <button class="pet${petNumber} pet-image${petImage}-button exercise-button">
             Exercise
           </button>
-          <button class="pet${petNumber} calculus-button">
+          <button class="pet${petNumber} pet-image${petImage}-button calculus-button">
             Do Calculus
           </button>
-          <button class="pet${petNumber} duplicate">
+          <button class="pet${petNumber} pet-image${petImage}-button duplicate">
             Duplicate
           </button>
         </div>

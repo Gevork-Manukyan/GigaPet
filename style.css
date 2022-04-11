@@ -76,25 +76,61 @@
   .pet-image1 {
     background-color: rgb(62, 129, 237);
   } 
+
+  .pet-image1-button {
+    background-color: rgb(34, 85, 168);
+    border-color: #404853;
+    color: #fafafa;
+  }
   
   .pet-image2 {
     background-color: rgb(132, 165, 199);
   } 
+
+  .pet-image2-button {
+    background-color: #6e7e91;
+    border-color: #404853;
+    color: #fafafa;
+  }
   
   .pet-image3 {
     background-color: rgb(117, 62, 237);
   }
 
+  .pet-image3-button {
+    background-color: rgb(53, 16, 134);
+    border-color: #404853;
+    color: #fafafa;
+  }
+
   .pet-image4 {
     background-color: rgb(205, 237, 62);
   } 
+
+  .pet-image4-button {
+    background-color: rgb(124, 151, 3);
+    border-color: #404853;
+    color: #fafafa;
+  }
   
   .pet-image5 {
     background-color: rgb(255, 85, 0);
   } 
+
+  .pet-image5-button {
+    background-color: rgb(199, 41, 6);
+    border-color: #404853;
+    color: #fafafa;
+  }
   
   .pet-image6  {
     background-color: rgb(54, 64, 81);
+  }
+
+  .pet-image6-button {
+    background-color: #4e627c;
+    border-color: #404853;
+    color: #fafafa;
   }
 
   .dashboard {
@@ -119,11 +155,8 @@
       display: inline-block;
       float: left;
     font-size:15px;
-    background-color: #1e2835;
-    border-color: #404853;
     cursor:pointer;
     background-image: linear-gradient(to bottom,rgba(246,246,246,.1),0%,rgba(30,40,53,0),66%);
-    color: #fafafa;
     user-select: none;
   }
 
