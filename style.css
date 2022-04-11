@@ -91,6 +91,12 @@
     user-select: none;
   }
 
+  .text-display {
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+  }
+
   .text-display-content {
     background-color: bisque;
     width: 438px;

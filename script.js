@@ -1,5 +1,4 @@
-// Add a variable "pet_info" equal to a object with the name (string), weight (number), and happiness (number) of your pet
-var pet_info = {name: null, weight:"??", happiness:"??", smartness: "??", prestige: 0};
+const petArray = []
 
 $(function() { // Makes sure that your function is called once all the DOM elements of the page are ready to be used.
     
@@ -13,17 +12,26 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
     $('.calculus-button').click(clickedCalculusButton);
     $('.duplicate').click(clickedDuplicate);
     $('.clearBtn').click(clickedClear)
-   
-  // Prompt user for name
-  // while (pet_info.name === null) {
-  //     pet_info.name = prompt("Enter your pet name")
-  // }
-  pet_info.weight = getRandomInt(100)
-  pet_info.happiness = getRandomInt(10)
-  pet_info.smartness = getRandomInt(6)
+
+  if (petArray.length === 0)
+    petArray.push( new createNewPet() )
 
   updatePetInfoInHtml()
 })
+
+function createNewPet() {
+  // Add a variable "pet_info" equal to a object with the name (string), weight (number), and happiness (number) of your pet
+  this.name = null
+
+  while (this.name === null) {
+      this.name = prompt("Enter your pet name")
+  }
+  
+  this.weight = getRandomInt(100)
+  this.happiness = getRandomInt(10)
+  this.smartness = getRandomInt(6)
+  this.prestige = 0
+}
 
 function getRandomInt(upperLimit) {
   return Math.floor(Math.random() * (upperLimit - 1)) + 1;
@@ -88,6 +96,7 @@ function clickedDuplicate () {
     pet_info.prestige++
 
     addToTextBox(`${pet_info.name}: I have trancended REALITY!!!`)
+    createNewPet()
   } else {
     addToTextBox(`${pet_info.name}: Excuse me?`)
   }
