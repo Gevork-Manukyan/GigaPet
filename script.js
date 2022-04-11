@@ -5,6 +5,8 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
   if (petArray.length === 0)
     petArray.push( new createNewPet() )
 
+  $(`.clearBtn`).click(clickedClear)
+
   updatePetInfoInHtml(0)
 })
 
@@ -64,7 +66,6 @@ function createNewPet() {
     $(`.pet${petNumber}.exercise-button`).click(clickedExerciseButton);
     $(`.pet${petNumber}.calculus-button`).click(clickedCalculusButton);
     $(`.pet${petNumber}.duplicate`).click(clickedDuplicate);
-    $(`.pet${petNumber}.clearBtn`).click(clickedClear)
 }
 
 function getRandomInt(upperLimit) {
