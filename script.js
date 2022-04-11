@@ -13,14 +13,13 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
 function createNewPet() {
   this.name = null
 
-  // while (this.name === null) {
-  //     this.name = prompt("Enter your pet name")
-  // }
+  while (this.name === null) {
+      this.name = prompt("Enter your pet name")
+  }
   
   this.weight = getRandomInt(101)
   this.happiness = getRandomInt(11)
-  // TODO: Change back
-  // this.smartness = getRandomInt(6)
+  this.smartness = getRandomInt(6)
   this.smartness = 20
   this.prestige = 0
 
