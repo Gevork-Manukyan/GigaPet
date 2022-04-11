@@ -14,9 +14,9 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
     $('.duplicate').click(clickedDuplicate);
    
   // Prompt user for name
-  while (pet_info.name === null) {
-      pet_info.name = prompt("Enter your pet name")
-  }
+  // while (pet_info.name === null) {
+  //     pet_info.name = prompt("Enter your pet name")
+  // }
   pet_info.weight = getRandomInt(100)
   pet_info.happiness = getRandomInt(10)
   pet_info.smartness = getRandomInt(6)
@@ -124,7 +124,7 @@ function checkWeightAndHappinessBeforeUpdating() {
 
 function addToTextBox(string) {
   let p = $(`<p class="text-item"></p>`).text(string); 
-  $(".text-display-content").prepend(p)
+  $(".clearBtn").after(p)
 }
 
 // Updates your HTML with the current values in your pet_info object
