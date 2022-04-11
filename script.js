@@ -20,7 +20,6 @@ function createNewPet() {
   this.weight = getRandomInt(101)
   this.happiness = getRandomInt(11)
   this.smartness = getRandomInt(6)
-  this.smartness = 20
   this.prestige = 0
 
   let petNumber = petArray.length
