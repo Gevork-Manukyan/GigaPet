@@ -13,24 +13,25 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
 function createNewPet() {
   this.name = null
 
-  while (this.name === null) {
-      this.name = prompt("Enter your pet name")
-  }
+  // while (this.name === null) {
+  //     this.name = prompt("Enter your pet name")
+  // }
   
-  this.weight = getRandomInt(100)
-  this.happiness = getRandomInt(10)
+  this.weight = getRandomInt(101)
+  this.happiness = getRandomInt(11)
   // TODO: Change back
   // this.smartness = getRandomInt(6)
   this.smartness = 20
   this.prestige = 0
 
   let petNumber = petArray.length
+  let petImage = getRandomInt(7)
   $(".pet-content-wrapper").append(`
 
-  <div class="pet${petNumber}">
+  <div class="pet${petNumber} pet">
     <section class="pet-image-container">
       <!-- Replace pet image with your own pet image -->
-      <img class="pet-image pet-image${petNumber}" src="https://cdn.glitch.com/3aa98e05-3216-497c-a251-210ae4713a83%2Fhound.jpg?1541715339220">
+      <img class="pet-image pet-image${petNumber}" src="./assets/${petImage}.png">
     </section>
     <section class="dashboard">
         <div>Name: <strong><span class="name${petNumber}"></span></strong></div>
@@ -68,6 +69,7 @@ function createNewPet() {
     $(`.pet${petNumber}.duplicate`).click(clickedDuplicate);
 }
 
+// Random Int between 1 and number (exclusive)
 function getRandomInt(upperLimit) {
   return Math.floor(Math.random() * (upperLimit - 1)) + 1;
 }
