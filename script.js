@@ -3,7 +3,7 @@ const petArray = []
 $(function() { // Makes sure that your function is called once all the DOM elements of the page are ready to be used.
     
     // Called function to update the name, happiness, and weight of our pet in our HTML
-    checkAndUpdatePetInfoInHtml();
+    // checkAndUpdatePetInfoInHtml();
   
     // When each button is clicked, it will "call" function for that button (functions are below)
     $('.treat-button').click(clickedTreatButton);
@@ -16,11 +16,11 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
   if (petArray.length === 0)
     petArray.push( new createNewPet() )
 
-  updatePetInfoInHtml()
+  updatePetInfoInHtml(0)
 })
 
 function createNewPet() {
-  // Add a variable "pet_info" equal to a object with the name (string), weight (number), and happiness (number) of your pet
+  // Add a variable "petArray[petNumber]" equal to a object with the name (string), weight (number), and happiness (number) of your pet
   this.name = null
 
   while (this.name === null) {
@@ -29,109 +29,159 @@ function createNewPet() {
   
   this.weight = getRandomInt(100)
   this.happiness = getRandomInt(10)
-  this.smartness = getRandomInt(6)
+  // this.smartness = getRandomInt(6)
+  this.smartness = 20
   this.prestige = 0
+
+  let petNumber = petArray.length
+  $("pet-content-wrapper").append(`
+
+  <div class="pet${petNumber}">
+    <section class="pet-image-container">
+      <!-- Replace pet image with your own pet image -->
+      <img class="pet-image" src="https://cdn.glitch.com/3aa98e05-3216-497c-a251-210ae4713a83%2Fhound.jpg?1541715339220">
+    </section>
+    <section class="dashboard">
+        <div>Name: <strong><span class="name name${petNumber}"></span></strong></div>
+        <div>Weight: <strong><span class="weight weight${petNumber}"></span> pounds</strong></div>
+        <div>Happiness: <strong><span class="happiness happiness${petNumber}"></span> tail wags (per min)</strong></div>
+        <div>Intelligence: <strong><span class="intelligence intelligence${petNumber}"></span> Smartness</strong></div>
+        <div>Prestige: <strong><span class="prestige prestige${petNumber}"></span> lvl</strong></div>
+        <div class="button-container">
+          <button class="treat-button">
+            Treat
+          </button>
+          <button class="play-button">
+            Play
+          </button>
+          <button class="exercise-button">
+            Exercise
+          </button>
+          <button class="calculus-button">
+            Do Calculus
+          </button>
+          <button class="duplicate">
+            Duplicate
+          </button>
+        </div>
+    </section>
+  </div>
+
+  `)
 }
 
 function getRandomInt(upperLimit) {
   return Math.floor(Math.random() * (upperLimit - 1)) + 1;
 }
 
-function clickedTreatButton() {
-  if (pet_info.happiness <= 19.5 && pet_info.weight <= 180) {
-    pet_info.happiness += 0.5
-    pet_info.weight += 20
+function clickedTreatButton(data) {
+  let petNumber = parseInt( data.target.className.split(" ")[0].charAt(3) )
 
-    addToTextBox(`${pet_info.name}: Yummy bruv. Can I get some more?`)
+  if (petArray[petNumber].happiness <= 19.5 && petArray[petNumber].weight <= 180) {
+    petArray[petNumber].happiness += 0.5
+    petArray[petNumber].weight += 20
+
+    addToTextBox(`${petArray[petNumber].name}: Yummy bruv. Can I get some more?`)
   } else {
-    addToTextBox(`${pet_info.name}: If I eat any more I will burst`)
+    addToTextBox(`${petArray[petNumber].name}: If I eat any more I will burst`)
   }
 
 
-  checkAndUpdatePetInfoInHtml();
+  checkAndUpdatePetInfoInHtml(petNumber);
 }
 
-function clickedPlayButton() {
-  if (pet_info.happiness <= 19.5 && pet_info.weight >= 5) {
-    pet_info.happiness += 0.5
-    pet_info.weight -= 5
+function clickedPlayButton(data) {
+  let petNumber = parseInt( data.target.className.split(" ")[0].charAt(3) )
+  
+  if (petArray[petNumber].happiness <= 19.5 && petArray[petNumber].weight >= 5) {
+    petArray[petNumber].happiness += 0.5
+    petArray[petNumber].weight -= 5
 
-    addToTextBox(`${pet_info.name}: Whoopy! That was fun!`)
+    addToTextBox(`${petArray[petNumber].name}: Whoopy! That was fun!`)
   } else {
-    addToTextBox(`${pet_info.name}: No playing! I'm tired.`)
+    addToTextBox(`${petArray[petNumber].name}: No playing! I'm tired.`)
   }
 
-  checkAndUpdatePetInfoInHtml();
+  checkAndUpdatePetInfoInHtml(petNumber);
 }
 
-function clickedExerciseButton() {
-  if (pet_info.happiness >= 0.5 && pet_info.weight >= 10) {
-    pet_info.happiness -= 0.5
-    pet_info.weight -= 10
+function clickedExerciseButton(data) {
+  let petNumber = parseInt( data.target.className.split(" ")[0].charAt(3) )
 
-    addToTextBox(`${pet_info.name}: Great workout. Feeling pumped.`)
+  if (petArray[petNumber].happiness >= 0.5 && petArray[petNumber].weight >= 10) {
+    petArray[petNumber].happiness -= 0.5
+    petArray[petNumber].weight -= 10
+
+    addToTextBox(`${petArray[petNumber].name}: Great workout. Feeling pumped.`)
   } else {
-    addToTextBox(`${pet_info.name}: I'm too sore for this.`)
+    addToTextBox(`${petArray[petNumber].name}: I'm too sore for this.`)
   }
 
-  checkAndUpdatePetInfoInHtml();
+  checkAndUpdatePetInfoInHtml(petNumber);
 }
 
-function clickedCalculusButton() {
-  if (pet_info.happiness >= 5) {
-    pet_info.smartness = Math.round((pet_info.smartness + 0.2) * 10) / 10
-    pet_info.happiness -= 5
+function clickedCalculusButton(data) {
+  let petNumber = parseInt( data.target.className.split(" ")[0].charAt(3) )
 
-    addToTextBox(`${pet_info.name}: Ah yes, I love calculus.`)
+  if (petArray[petNumber].happiness >= 5) {
+    petArray[petNumber].smartness = Math.round((petArray[petNumber].smartness + 0.2) * 10) / 10
+    petArray[petNumber].happiness -= 5
+
+    addToTextBox(`${petArray[petNumber].name}: Ah yes, I love calculus.`)
   } else {
-    addToTextBox(`${pet_info.name}: Stop torturing me!`)
+    addToTextBox(`${petArray[petNumber].name}: Stop torturing me!`)
   }
 
-  checkAndUpdatePetInfoInHtml();
+  checkAndUpdatePetInfoInHtml(petNumber);
 }
 
-function clickedDuplicate () {
-  if (pet_info.smartness >= 20) {
-    pet_info.smartness -= 20
-    pet_info.prestige++
+function clickedDuplicate (data) {
+  let petNumber = parseInt( data.target.className.split(" ")[0].charAt(3) )
 
-    addToTextBox(`${pet_info.name}: I have trancended REALITY!!!`)
+  if (petArray[petNumber].smartness >= 20) {
+    petArray[petNumber].smartness -= 20
+    petArray[petNumber].prestige++
+
+    addToTextBox(`${petArray[petNumber].name}: I have trancended REALITY!!!`)
     createNewPet()
   } else {
-    addToTextBox(`${pet_info.name}: Excuse me?`)
+    addToTextBox(`${petArray[petNumber].name}: Excuse me?`)
   }
+
+  checkAndUpdatePetInfoInHtml(petNumber);
 }
 
 function clickedClear() {
   $("p").remove(".text-item")
 }
 
-function checkAndUpdatePetInfoInHtml() {
-  checkWeightAndHappinessBeforeUpdating();  
-  updatePetInfoInHtml();
+function checkAndUpdatePetInfoInHtml(petNumber) {
+
+  checkWeightAndHappinessBeforeUpdating(petNumber);  
+  updatePetInfoInHtml(petNumber);
 }
 
-function checkWeightAndHappinessBeforeUpdating() {
+function checkWeightAndHappinessBeforeUpdating(petNumber) {
 
-  if (pet_info.happiness < 0) {
+  if (petArray[petNumber].happiness < 0) {
     // message
-    pet_info.happiness = 0
-  } else if (pet_info.happiness > 20) {
+    petArray[petNumber].happiness = 0
+  } else if (petArray[petNumber].happiness > 20) {
     // message
-    pet_info.happiness = 20
+    petArray[petNumber].happiness = 20
   }
 
-  if (pet_info.weight < 0) {
+  if (petArray[petNumber].weight < 0) {
     // message
-    pet_info.weight = 0
-  } else if (pet_info.weight > 200) {
+    petArray[petNumber].weight = 0
+  } else if (petArray[petNumber].weight > 200) {
     // message 
-    pet_info.weight = 200
+    petArray[petNumber].weight = 200
   }
 
-  if (pet_info.smartness < 0) {
+  if (petArray[petNumber].smartness < 0) {
     // message
-    pet_info.smartness = 0
+    petArray[petNumber].smartness = 0
   } 
 }
 
@@ -140,12 +190,14 @@ function addToTextBox(string) {
   $(".clearBtn").after(p)
 }
 
-// Updates your HTML with the current values in your pet_info object
-function updatePetInfoInHtml() {
-  $('.name').text(pet_info['name']);
-  $('.weight').text(pet_info['weight']);
-  $('.happiness').text(pet_info['happiness']);
-  $('.intelligence').text(pet_info['smartness'])
-  $('.prestige').text(pet_info['prestige'])
+// Updates your HTML with the current values in your petArray[petNumber] object
+function updatePetInfoInHtml(petNumber) {
+  console.log(petArray[petNumber])
+
+  $(`.name${petNumber}`).text(petArray[petNumber].name);
+  $(`.weight${petNumber}`).text(petArray[petNumber].weight);
+  $(`.happiness${petNumber}`).text(petArray[petNumber].happiness);
+  $(`.intelligence${petNumber}`).text(petArray[petNumber].smartness);
+  $(`.prestige${petNumber}`).text(petArray[petNumber].prestige);
 }
   
