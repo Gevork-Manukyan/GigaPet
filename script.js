@@ -4,14 +4,6 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
     
     // Called function to update the name, happiness, and weight of our pet in our HTML
     // checkAndUpdatePetInfoInHtml();
-  
-    // When each button is clicked, it will "call" function for that button (functions are below)
-    $('.treat-button').click(clickedTreatButton);
-    $('.play-button').click(clickedPlayButton);
-    $('.exercise-button').click(clickedExerciseButton);
-    $('.calculus-button').click(clickedCalculusButton);
-    $('.duplicate').click(clickedDuplicate);
-    $('.clearBtn').click(clickedClear)
 
   if (petArray.length === 0)
     petArray.push( new createNewPet() )
@@ -34,33 +26,33 @@ function createNewPet() {
   this.prestige = 0
 
   let petNumber = petArray.length
-  $("pet-content-wrapper").append(`
+  $(".pet-content-wrapper").append(`
 
   <div class="pet${petNumber}">
     <section class="pet-image-container">
       <!-- Replace pet image with your own pet image -->
-      <img class="pet-image" src="https://cdn.glitch.com/3aa98e05-3216-497c-a251-210ae4713a83%2Fhound.jpg?1541715339220">
+      <img class="pet-image pet-image${petNumber}" src="https://cdn.glitch.com/3aa98e05-3216-497c-a251-210ae4713a83%2Fhound.jpg?1541715339220">
     </section>
     <section class="dashboard">
-        <div>Name: <strong><span class="name name${petNumber}"></span></strong></div>
-        <div>Weight: <strong><span class="weight weight${petNumber}"></span> pounds</strong></div>
-        <div>Happiness: <strong><span class="happiness happiness${petNumber}"></span> tail wags (per min)</strong></div>
-        <div>Intelligence: <strong><span class="intelligence intelligence${petNumber}"></span> Smartness</strong></div>
-        <div>Prestige: <strong><span class="prestige prestige${petNumber}"></span> lvl</strong></div>
+        <div>Name: <strong><span class="name${petNumber}"></span></strong></div>
+        <div>Weight: <strong><span class="weight${petNumber}"></span> pounds</strong></div>
+        <div>Happiness: <strong><span class="happiness${petNumber}"></span> tail wags (per min)</strong></div>
+        <div>Intelligence: <strong><span class="intelligence${petNumber}"></span> Smartness</strong></div>
+        <div>Prestige: <strong><span class="prestige${petNumber}"></span> lvl</strong></div>
         <div class="button-container">
-          <button class="treat-button">
+          <button class="pet${petNumber} treat-button">
             Treat
           </button>
-          <button class="play-button">
+          <button class="pet${petNumber} play-button">
             Play
           </button>
-          <button class="exercise-button">
+          <button class="pet${petNumber} exercise-button">
             Exercise
           </button>
-          <button class="calculus-button">
+          <button class="pet${petNumber} calculus-button">
             Do Calculus
           </button>
-          <button class="duplicate">
+          <button class="pet${petNumber} duplicate">
             Duplicate
           </button>
         </div>
@@ -68,6 +60,14 @@ function createNewPet() {
   </div>
 
   `)
+
+    // When each button is clicked, it will "call" function for that button (functions are below)
+    $(`.pet${petNumber}.treat-button`).click(clickedTreatButton);
+    $(`.pet${petNumber}.play-button`).click(clickedPlayButton);
+    $(`.pet${petNumber}.exercise-button`).click(clickedExerciseButton);
+    $(`.pet${petNumber}.calculus-button`).click(clickedCalculusButton);
+    $(`.pet${petNumber}.duplicate`).click(clickedDuplicate);
+    $(`.pet${petNumber}.clearBtn`).click(clickedClear)
 }
 
 function getRandomInt(upperLimit) {
@@ -143,12 +143,13 @@ function clickedDuplicate (data) {
     petArray[petNumber].prestige++
 
     addToTextBox(`${petArray[petNumber].name}: I have trancended REALITY!!!`)
-    createNewPet()
+    petArray.push(new createNewPet())
   } else {
     addToTextBox(`${petArray[petNumber].name}: Excuse me?`)
   }
 
   checkAndUpdatePetInfoInHtml(petNumber);
+  checkAndUpdatePetInfoInHtml(petNumber + 1);
 }
 
 function clickedClear() {
