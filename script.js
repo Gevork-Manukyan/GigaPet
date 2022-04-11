@@ -2,9 +2,6 @@ const petArray = []
 
 $(function() { // Makes sure that your function is called once all the DOM elements of the page are ready to be used.
     
-    // Called function to update the name, happiness, and weight of our pet in our HTML
-    // checkAndUpdatePetInfoInHtml();
-
   if (petArray.length === 0)
     petArray.push( new createNewPet() )
 
@@ -12,7 +9,6 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
 })
 
 function createNewPet() {
-  // Add a variable "petArray[petNumber]" equal to a object with the name (string), weight (number), and happiness (number) of your pet
   this.name = null
 
   while (this.name === null) {
@@ -21,6 +17,7 @@ function createNewPet() {
   
   this.weight = getRandomInt(100)
   this.happiness = getRandomInt(10)
+  // TODO: Change back
   // this.smartness = getRandomInt(6)
   this.smartness = 20
   this.prestige = 0

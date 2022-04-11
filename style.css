@@ -48,8 +48,10 @@
 
   .pet-content-wrapper {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    overflow-y: auto;
+    margin-bottom: 10px;
   }
  
   .pet-image {
@@ -67,18 +69,19 @@
     align-items: flex-start;
     padding:20px;
   }
-
-  .dashboard > div {
-    display: inline-block;
-  }
   
   .button-container {
-    margin-top:20px;
+    width: 400px;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
   
   .button-container button {
     width: 100px;
       margin-right: 10px;
+      margin-bottom: 10px;
       text-align: center;
       display: inline-block;
       float: left;
