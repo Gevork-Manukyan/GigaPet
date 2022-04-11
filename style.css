@@ -98,7 +98,12 @@
     padding: 15px;
     border: #000 solid;
     border-radius: 5px;
+    overflow: auto;
 
     font-size: 15px;
     font-weight: 600;
+  }
+
+  .text-item {
+    margin: 0px 0px 16px 0px;
   }

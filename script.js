@@ -13,15 +13,14 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
     $('.calculus-button').click(clickedCalculusButton)
    
   // Prompt user for name
-  // while (pet_info.name === null) {
-  //     pet_info.name = prompt("Enter your pet name")
-  // }
+  while (pet_info.name === null) {
+      pet_info.name = prompt("Enter your pet name")
+  }
   pet_info.weight = getRandomInt(100)
   pet_info.happiness = getRandomInt(10)
   pet_info.smartness = getRandomInt(6)
 
   updatePetInfoInHtml()
-
 })
 
 function getRandomInt(upperLimit) {
@@ -32,6 +31,10 @@ function clickedTreatButton() {
   if (pet_info.happiness <= 19.5 && pet_info.weight <= 180) {
     pet_info.happiness += 0.5
     pet_info.weight += 20
+
+    addToTextBox(`${pet_info.name}: Yummy bruv. Can I get some more?`)
+  } else {
+    addToTextBox(`${pet_info.name}: If I eat any more I will burst`)
   }
 
 
@@ -42,7 +45,11 @@ function clickedPlayButton() {
   if (pet_info.happiness <= 19.5 && pet_info.weight >= 5) {
     pet_info.happiness += 0.5
     pet_info.weight -= 5
-  } 
+
+    addToTextBox(`${pet_info.name}: Whoopy! That was fun!`)
+  } else {
+    addToTextBox(`${pet_info.name}: No playing! I'm tired.`)
+  }
 
   checkAndUpdatePetInfoInHtml();
 }
@@ -51,7 +58,11 @@ function clickedExerciseButton() {
   if (pet_info.happiness >= 0.5 && pet_info.weight >= 10) {
     pet_info.happiness -= 0.5
     pet_info.weight -= 10
-  } 
+
+    addToTextBox(`${pet_info.name}: Great workout. Feeling pumped.`)
+  } else {
+    addToTextBox(`${pet_info.name}: I'm too sore for this.`)
+  }
 
   checkAndUpdatePetInfoInHtml();
 }
@@ -60,7 +71,11 @@ function clickedCalculusButton() {
   if (pet_info.happiness >= 5) {
     pet_info.smartness = Math.round((pet_info.smartness + 0.2) * 10) / 10
     pet_info.happiness -= 5
-  } 
+
+    addToTextBox(`${pet_info.name}: Ah yes, I love calculus.`)
+  } else {
+    addToTextBox(`${pet_info.name}: Stop torturing me!`)
+  }
 
   checkAndUpdatePetInfoInHtml();
 }
@@ -93,6 +108,11 @@ function checkWeightAndHappinessBeforeUpdating() {
     // message
     pet_info.smartness = 0
   } 
+}
+
+function addToTextBox(string) {
+  let p = $(`<p class="text-item"></p>`).text(string); 
+  $(".text-display-content").prepend(p)
 }
 
 // Updates your HTML with the current values in your pet_info object
