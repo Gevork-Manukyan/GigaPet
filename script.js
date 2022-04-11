@@ -12,6 +12,7 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
     $('.exercise-button').click(clickedExerciseButton);
     $('.calculus-button').click(clickedCalculusButton);
     $('.duplicate').click(clickedDuplicate);
+    $('.clearBtn').click(clickedClear)
    
   // Prompt user for name
   // while (pet_info.name === null) {
@@ -92,6 +93,9 @@ function clickedDuplicate () {
   }
 }
 
+function clickedClear() {
+  $("p").remove(".text-item")
+}
 
 function checkAndUpdatePetInfoInHtml() {
   checkWeightAndHappinessBeforeUpdating();  
